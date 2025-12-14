@@ -10,7 +10,7 @@ import {
 
 const StudentDashboard = () => {
   const { user } = useAuth();
-  const [stats, setStats] = useState({
+  const [stats] = useState({
     assessmentsCompleted: 1,
     upcomingAppointments: 2,
     completedSessions: 3,
