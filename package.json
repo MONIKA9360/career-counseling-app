@@ -1,7 +1,7 @@
 {
-  "name": "career-counseling-app",
+  "name": "careerpath-pro",
   "version": "1.0.0",
-  "description": "Career Counseling Web Application for College Students",
+  "description": "CareerPath Pro - Professional Career Counseling Platform for College Students",
   "main": "server/index.js",
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\"",
@@ -12,7 +12,7 @@
     "install-deps": "npm install && cd server && npm install && cd ../client && npm install",
     "netlify-build": "cd client && npm install && npm run build"
   },
-  "keywords": ["career", "counseling", "education", "react", "nodejs"],
+  "keywords": ["career", "counseling", "education", "react", "nodejs", "assessment", "professional", "students", "guidance"],
   "author": "Your Name",
   "license": "MIT",
   "devDependencies": {

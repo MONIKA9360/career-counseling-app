@@ -45,7 +45,7 @@ app.use('/api/contact', require('./routes/contact'));
 
 // Health check
 app.get('/api/health', (req, res) => {
-  res.json({ message: 'Career Counseling API is running!' });
+  res.json({ message: 'CareerPath Pro API is running!' });
 });
 
 // Error handling middleware
