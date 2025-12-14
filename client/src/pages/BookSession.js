@@ -39,7 +39,7 @@ const BookSession = () => {
 
   const fetchCounselors = async () => {
     try {
-      const response = await axios.get('/api/counselors');
+      const response = await axios.get('/counselors');
       setCounselors(response.data);
     } catch (error) {
       console.error('Error fetching counselors:', error);
@@ -64,7 +64,7 @@ const BookSession = () => {
     setLoading(true);
 
     try {
-      await axios.post('/api/appointments', {
+      await axios.post('/appointments', {
         counselorId: selectedCounselor,
         date: formData.date,
         timeSlot: formData.timeSlot,

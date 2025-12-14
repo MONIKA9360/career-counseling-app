@@ -1,5 +1,5 @@
 const express = require('express');
-const { getUsers } = require('../utils/fileStorage');
+const { getUsers } = require('../utils/netlifyStorage');
 
 const router = express.Router();
 

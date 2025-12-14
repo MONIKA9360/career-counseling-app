@@ -1,5 +1,5 @@
 const express = require('express');
-const { findUserById, updateUser } = require('../utils/fileStorage');
+const { findUserById, updateUser } = require('../utils/netlifyStorage');
 const auth = require('../middleware/auth');
 
 const router = express.Router();
