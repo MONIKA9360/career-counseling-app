@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAppointments, createAppointment, findUserById } = require('../utils/netlifyStorage');
+const { getAppointments, createAppointment, findUserById } = require('../utils/vercelStorage');
 const auth = require('../middleware/auth');
 
 const router = express.Router();

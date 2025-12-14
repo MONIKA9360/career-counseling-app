@@ -2,7 +2,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const { body, validationResult } = require('express-validator');
-const { findUserByEmail, findUserById, createUser } = require('../utils/netlifyStorage');
+const { findUserByEmail, findUserById, createUser } = require('../utils/vercelStorage');
 const auth = require('../middleware/auth');
 
 const router = express.Router();

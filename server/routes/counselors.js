@@ -1,5 +1,5 @@
 const express = require('express');
-const { getUsers } = require('../utils/netlifyStorage');
+const { getUsers } = require('../utils/vercelStorage');
 
 const router = express.Router();
 
