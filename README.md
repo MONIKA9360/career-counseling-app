@@ -1,4 +1,4 @@
-# 🎯 CareerPath Pro - Professional Career Counseling Platform
+# 🎯 CareerGuide - Career Counseling Web Application
 
 [![React](https://img.shields.io/badge/React-18.2.0-blue.svg)](https://reactjs.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
@@ -6,7 +6,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.3.6-38B2AC.svg)](https://tailwindcss.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-An advanced, full-stack career counseling platform designed to help college students discover their ideal career paths through AI-powered assessments, expert counselor sessions, and comprehensive career guidance resources. Built with modern technologies and perfect for final year projects, portfolios, and real-world deployment.
+A modern, full-stack web application designed to help college students discover suitable career paths, book counseling sessions, and access career guidance resources. Perfect for final year projects, portfolios, and real-world deployment.
 
 ## 🌟 Live Demo
 
@@ -92,7 +92,7 @@ An advanced, full-stack career counseling platform designed to help college stud
 ## 📁 Project Structure
 
 ```
-careerpath-pro/
+career-counseling-app/
 ├── 📁 client/                    # React frontend application
 │   ├── 📁 public/               # Static files
 │   ├── 📁 src/

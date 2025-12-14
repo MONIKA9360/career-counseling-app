@@ -29,7 +29,7 @@ app.use('/api/contact', contactRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
-  res.json({ message: 'CareerPath Pro API is running on Netlify Functions!' });
+  res.json({ message: 'CareerGuide API is running on Netlify Functions!' });
 });
 
 // Error handling middleware

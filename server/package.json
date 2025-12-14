@@ -1,7 +1,7 @@
 {
-  "name": "careerpath-pro-server",
+  "name": "career-counseling-server",
   "version": "1.0.0",
-  "description": "Backend API for CareerPath Pro - Professional Career Counseling Platform",
+  "description": "Backend API for CareerGuide - Career Counseling Application",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
