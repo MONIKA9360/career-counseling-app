@@ -118,18 +118,20 @@ const SinglePage = () => {
   const fetchCounselors = async () => {
     try {
       const response = await axios.get('/counselors');
-      setCounselors(response.data);
+      setCounselors(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error('Error fetching counselors:', error);
+      setCounselors([]); // Ensure it's always an array
     }
   };
 
   const fetchBlogPosts = async () => {
     try {
       const response = await axios.get('/blog');
-      setBlogPosts(response.data);
+      setBlogPosts(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error('Error fetching blog posts:', error);
+      setBlogPosts([]); // Ensure it's always an array
     }
   };
 
@@ -689,7 +691,7 @@ const SinglePage = () => {
                   required
                 >
                   <option value="">Choose a counselor...</option>
-                  {counselors.map((counselor) => (
+                  {Array.isArray(counselors) && counselors.map((counselor) => (
                     <option key={counselor.id} value={counselor.id}>
                       {counselor.name} - {counselor.profile?.specialization || 'General Counseling'}
                     </option>
@@ -788,7 +790,7 @@ const SinglePage = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post) => (
+            {Array.isArray(blogPosts) && blogPosts.map((post) => (
               <article key={post.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
                 <div className="p-6">
                   <div className="flex items-center text-sm text-gray-500 mb-2">
