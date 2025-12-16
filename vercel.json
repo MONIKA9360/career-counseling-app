@@ -31,7 +31,11 @@
       "dest": "/client/build/favicon.ico"
     },
     {
-      "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|json))",
+      "src": "/robots.txt",
+      "dest": "/client/build/robots.txt"
+    },
+    {
+      "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|json|txt))",
       "dest": "/client/build/$1"
     },
     {
