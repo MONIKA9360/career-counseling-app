@@ -992,6 +992,7 @@ const SinglePage = () => {
           
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
             <p>&copy; 2024 CareerGuide. All rights reserved.</p>
+            <p className="mt-2 text-sm">Developed by <span className="text-primary-400 font-semibold">MONIKA M</span></p>
           </div>
         </div>
       </footer>
