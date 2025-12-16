@@ -7,8 +7,8 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd server && npm run dev",
     "client": "cd client && npm start",
-    "build": "cd client && npm install && npm run build && node build.js",
-    "vercel-build": "cd client && npm install && npm run build && node build.js",
+    "build": "cd client && npm install && npm run build",
+    "vercel-build": "cd client && npm install && npm run build",
     "build:netlify": "npm install && cd client && npm install && npm run build && cd ../server && cp package-netlify.json ../netlify/functions/package.json",
     "install-deps": "npm install && cd server && npm install && cd ../client && npm install",
     "netlify-build": "cd client && npm install && npm run build"
