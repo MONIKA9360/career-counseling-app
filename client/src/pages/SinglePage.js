@@ -275,23 +275,30 @@ const SinglePage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
-      <nav className="bg-white shadow-lg sticky top-0 z-50">
+      <nav className="bg-white/95 backdrop-blur-md shadow-soft sticky top-0 z-50 border-b border-secondary-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
+          <div className="flex justify-between h-18">
             <div className="flex items-center">
-              <span className="text-2xl font-bold text-primary-600">CareerGuide</span>
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">C</span>
+                </div>
+                <span className="text-2xl font-display font-bold bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text text-transparent">
+                  CareerGuide
+                </span>
+              </div>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-1">
               {navigation.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.id)}
-                  className={`px-3 py-2 text-sm font-medium transition-colors ${
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
                     activeSection === item.id
-                      ? 'text-primary-600 border-b-2 border-primary-600'
-                      : 'text-gray-700 hover:text-primary-600'
+                      ? 'text-primary-600 bg-primary-50 shadow-soft'
+                      : 'text-secondary-600 hover:text-primary-600 hover:bg-secondary-50'
                   }`}
                 >
                   {item.name}
@@ -409,65 +416,131 @@ const SinglePage = () => {
       </nav>
 
       {/* Home Section */}
-      <section id="home" className="bg-gradient-to-r from-primary-600 to-primary-700 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Discover Your Perfect
-              <span className="block text-yellow-300">Career Path</span>
+      <section id="home" className="relative bg-gradient-to-br from-secondary-900 via-primary-900 to-secondary-800 text-white py-24 lg:py-32 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center animate-fade-in">
+            <div className="mb-6">
+              <span className="inline-block px-4 py-2 bg-primary-500/20 text-primary-200 text-sm font-medium rounded-full border border-primary-400/30 backdrop-blur-sm">
+                🎯 Professional Career Guidance
+              </span>
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl font-display font-bold mb-8 leading-tight">
+              Discover Your
+              <span className="block bg-gradient-to-r from-primary-300 to-accent-300 bg-clip-text text-transparent">
+                Perfect Career
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-              Get personalized career guidance, take comprehensive assessments, and connect with expert counselors to build your future.
+            
+            <p className="text-xl md:text-2xl mb-12 max-w-4xl mx-auto text-secondary-200 leading-relaxed">
+              Transform your future with personalized career guidance, comprehensive assessments, and expert counseling designed for ambitious professionals.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
               <button
                 onClick={() => scrollToSection('assessment')}
-                className="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-colors"
+                className="group bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-large hover:shadow-xl"
               >
-                Take Assessment
+                <span className="flex items-center">
+                  Start Assessment
+                  <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
               </button>
+              
               <button
                 onClick={() => scrollToSection('booking')}
-                className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-3 px-8 rounded-lg transition-colors"
+                className="group bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white hover:text-secondary-900 font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105"
               >
-                Book Counseling
+                Book Consultation
               </button>
+            </div>
+            
+            {/* Stats Section */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary-300 mb-2">10K+</div>
+                <div className="text-secondary-300 text-sm uppercase tracking-wide">Students Guided</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary-300 mb-2">95%</div>
+                <div className="text-secondary-300 text-sm uppercase tracking-wide">Success Rate</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary-300 mb-2">50+</div>
+                <div className="text-secondary-300 text-sm uppercase tracking-wide">Expert Counselors</div>
+              </div>
             </div>
           </div>
         </div>
+        
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-10 w-20 h-20 bg-primary-400/20 rounded-full blur-xl animate-bounce-gentle"></div>
+        <div className="absolute bottom-20 right-10 w-32 h-32 bg-accent-400/20 rounded-full blur-xl animate-bounce-gentle" style={{animationDelay: '1s'}}></div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-white">
+      <section id="about" className="py-24 bg-gradient-to-b from-secondary-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">About CareerGuide</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We're dedicated to helping college students discover their perfect career path through expert guidance, comprehensive assessments, and personalized counseling.
+          <div className="text-center mb-20">
+            <div className="mb-6">
+              <span className="inline-block px-4 py-2 bg-primary-100 text-primary-700 text-sm font-semibold rounded-full">
+                Why Choose CareerGuide
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-secondary-900 mb-6">
+              Empowering Your
+              <span className="block text-primary-600">Professional Journey</span>
+            </h2>
+            <p className="text-xl text-secondary-600 max-w-4xl mx-auto leading-relaxed">
+              We're dedicated to transforming careers through data-driven insights, expert guidance, and personalized strategies that unlock your true potential.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-6">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 text-primary-600 rounded-full mb-6">
-                <AcademicCapIcon className="h-8 w-8" />
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+            <div className="group text-center p-8 bg-white rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300 transform hover:-translate-y-2">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-600 text-white rounded-2xl mb-8 group-hover:scale-110 transition-transform duration-300">
+                <AcademicCapIcon className="h-10 w-10" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Career Assessment</h3>
-              <p className="text-gray-600">Comprehensive personality and skills assessment to identify your ideal career path.</p>
+              <h3 className="text-2xl font-bold text-secondary-900 mb-4">Smart Assessment</h3>
+              <p className="text-secondary-600 leading-relaxed">
+                AI-powered personality and skills assessment that provides deep insights into your ideal career trajectory and growth opportunities.
+              </p>
             </div>
-            <div className="text-center p-6">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 text-primary-600 rounded-full mb-6">
-                <UserGroupIcon className="h-8 w-8" />
+            
+            <div className="group text-center p-8 bg-white rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300 transform hover:-translate-y-2">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-success-500 to-success-600 text-white rounded-2xl mb-8 group-hover:scale-110 transition-transform duration-300">
+                <UserGroupIcon className="h-10 w-10" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Expert Counselors</h3>
-              <p className="text-gray-600">Connect with experienced career counselors who provide personalized guidance and support.</p>
+              <h3 className="text-2xl font-bold text-secondary-900 mb-4">Expert Mentorship</h3>
+              <p className="text-secondary-600 leading-relaxed">
+                Connect with industry-leading career counselors who provide personalized guidance, strategic planning, and ongoing support.
+              </p>
             </div>
-            <div className="text-center p-6">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 text-primary-600 rounded-full mb-6">
-                <ChartBarIcon className="h-8 w-8" />
+            
+            <div className="group text-center p-8 bg-white rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300 transform hover:-translate-y-2">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-accent-500 to-accent-600 text-white rounded-2xl mb-8 group-hover:scale-110 transition-transform duration-300">
+                <ChartBarIcon className="h-10 w-10" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Progress Tracking</h3>
-              <p className="text-gray-600">Monitor your career development journey with detailed analytics and progress reports.</p>
+              <h3 className="text-2xl font-bold text-secondary-900 mb-4">Progress Analytics</h3>
+              <p className="text-secondary-600 leading-relaxed">
+                Advanced tracking and analytics to monitor your career development with detailed insights and milestone achievements.
+              </p>
+            </div>
+          </div>
+          
+          {/* Trust Indicators */}
+          <div className="mt-20 text-center">
+            <p className="text-secondary-500 text-sm uppercase tracking-wide font-semibold mb-8">Trusted by leading institutions</p>
+            <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
+              <div className="px-6 py-3 bg-secondary-100 rounded-lg text-secondary-600 font-semibold">Harvard University</div>
+              <div className="px-6 py-3 bg-secondary-100 rounded-lg text-secondary-600 font-semibold">MIT</div>
+              <div className="px-6 py-3 bg-secondary-100 rounded-lg text-secondary-600 font-semibold">Stanford</div>
+              <div className="px-6 py-3 bg-secondary-100 rounded-lg text-secondary-600 font-semibold">IIT</div>
             </div>
           </div>
         </div>
