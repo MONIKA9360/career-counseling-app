@@ -547,77 +547,183 @@ const SinglePage = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive career guidance services designed to help you discover, plan, and achieve your career goals.
+      <section id="services" className="relative py-32 bg-gradient-to-br from-secondary-50 via-white to-primary-50 overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-primary-200/30 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-200/20 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-128 h-128 bg-gradient-to-r from-primary-100/20 to-accent-100/20 rounded-full blur-3xl animate-pulse-glow"></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20 animate-fade-in-up">
+            <div className="mb-6">
+              <span className="inline-block px-6 py-3 bg-gradient-to-r from-primary-500 to-accent-500 text-white text-sm font-bold rounded-full shadow-glow animate-bounce-gentle">
+                ✨ Premium Services
+              </span>
+            </div>
+            <h2 className="section-title gradient-text-animated">
+              Transform Your
+              <span className="block text-shimmer">Career Journey</span>
+            </h2>
+            <p className="section-subtitle animate-fade-in-up" style={{animationDelay: '200ms'}}>
+              Unlock your potential with our comprehensive suite of career development services designed for ambitious professionals.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Career Assessment</h3>
-              <p className="text-gray-600 mb-4">Comprehensive personality and skills assessment to identify your ideal career path.</p>
-              <div className="text-3xl font-bold text-primary-600 mb-4">Free</div>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center text-gray-700">
-                  <svg className="h-5 w-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                  Personality analysis
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <svg className="h-5 w-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                  Skills evaluation
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <svg className="h-5 w-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                  Career matching
-                </li>
-              </ul>
-              <button
-                onClick={() => scrollToSection('assessment')}
-                className="w-full btn-primary"
-              >
-                Take Assessment
-              </button>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+            {/* Free Assessment Card */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-success-400 to-primary-500 rounded-4xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-600 animate-pulse-glow"></div>
+              <div className="relative card-elevated shimmer-effect animate-fade-in-left">
+                <div className="absolute top-6 right-6">
+                  <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-success-500 to-success-600 text-white text-xs font-bold rounded-full animate-bounce-gentle">
+                    🎯 POPULAR
+                  </span>
+                </div>
+                
+                <div className="mb-8">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-success-500 to-success-600 rounded-3xl mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-glow">
+                    <AcademicCapIcon className="h-10 w-10 text-white animate-float" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-secondary-900 mb-4 group-hover:text-primary-600 transition-colors duration-400">
+                    Smart Career Assessment
+                  </h3>
+                  <p className="text-secondary-600 text-lg leading-relaxed mb-6">
+                    AI-powered comprehensive analysis of your personality, skills, and interests to discover your perfect career match.
+                  </p>
+                </div>
+
+                <div className="mb-8">
+                  <div className="flex items-baseline mb-6">
+                    <span className="text-5xl font-bold bg-gradient-to-r from-success-600 to-primary-600 bg-clip-text text-transparent">FREE</span>
+                    <span className="ml-3 text-secondary-500 line-through text-xl">$99</span>
+                  </div>
+                </div>
+
+                <div className="space-y-4 mb-10">
+                  {[
+                    { icon: '🧠', text: 'Advanced personality analysis', delay: '0ms' },
+                    { icon: '⚡', text: 'Skills & strengths evaluation', delay: '100ms' },
+                    { icon: '🎯', text: 'AI-powered career matching', delay: '200ms' },
+                    { icon: '📊', text: 'Detailed insights report', delay: '300ms' },
+                    { icon: '🚀', text: 'Growth recommendations', delay: '400ms' }
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-center text-secondary-700 animate-fade-in-right" style={{animationDelay: item.delay}}>
+                      <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-success-100 to-success-200 rounded-xl flex items-center justify-center mr-4 transform group-hover:scale-110 transition-transform duration-300">
+                        <span className="text-lg">{item.icon}</span>
+                      </div>
+                      <span className="font-medium">{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => scrollToSection('assessment')}
+                  className="w-full btn-glow group-hover:scale-105 transition-transform duration-400"
+                >
+                  <span className="flex items-center justify-center">
+                    Start Free Assessment
+                    <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </span>
+                </button>
+              </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">One-on-One Counseling</h3>
-              <p className="text-gray-600 mb-4">Personal sessions with certified career counselors for detailed guidance.</p>
-              <div className="text-3xl font-bold text-primary-600 mb-4">$50/session</div>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center text-gray-700">
-                  <svg className="h-5 w-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                  60-minute sessions
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <svg className="h-5 w-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                  Personalized advice
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <svg className="h-5 w-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                  Career planning
-                </li>
-              </ul>
-              <button
-                onClick={() => scrollToSection('booking')}
-                className="w-full btn-primary"
-              >
-                Book Session
+            {/* Premium Counseling Card */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-accent-500 rounded-4xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-600 animate-pulse-glow"></div>
+              <div className="relative card-elevated shimmer-effect animate-fade-in-right">
+                <div className="absolute top-6 right-6">
+                  <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-accent-500 to-primary-600 text-white text-xs font-bold rounded-full animate-bounce-gentle">
+                    👑 PREMIUM
+                  </span>
+                </div>
+                
+                <div className="mb-8">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary-500 to-accent-600 rounded-3xl mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-glow">
+                    <UserGroupIcon className="h-10 w-10 text-white animate-float" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-secondary-900 mb-4 group-hover:text-primary-600 transition-colors duration-400">
+                    Expert Mentorship
+                  </h3>
+                  <p className="text-secondary-600 text-lg leading-relaxed mb-6">
+                    One-on-one sessions with industry-leading career counselors for personalized guidance and strategic planning.
+                  </p>
+                </div>
+
+                <div className="mb-8">
+                  <div className="flex items-baseline mb-2">
+                    <span className="text-5xl font-bold bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">$75</span>
+                    <span className="ml-2 text-2xl text-secondary-500">/session</span>
+                  </div>
+                  <p className="text-secondary-500 text-sm">60-minute premium consultation</p>
+                </div>
+
+                <div className="space-y-4 mb-10">
+                  {[
+                    { icon: '⏰', text: '60-minute deep-dive sessions', delay: '0ms' },
+                    { icon: '🎯', text: 'Personalized career strategy', delay: '100ms' },
+                    { icon: '📈', text: 'Industry insights & trends', delay: '200ms' },
+                    { icon: '🤝', text: 'Networking opportunities', delay: '300ms' },
+                    { icon: '📋', text: 'Action plan & follow-up', delay: '400ms' }
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-center text-secondary-700 animate-fade-in-left" style={{animationDelay: item.delay}}>
+                      <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-primary-100 to-accent-100 rounded-xl flex items-center justify-center mr-4 transform group-hover:scale-110 transition-transform duration-300">
+                        <span className="text-lg">{item.icon}</span>
+                      </div>
+                      <span className="font-medium">{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => scrollToSection('booking')}
+                  className="w-full btn-primary group-hover:scale-105 transition-transform duration-400"
+                >
+                  <span className="flex items-center justify-center">
+                    Book Premium Session
+                    <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Additional Features */}
+          <div className="mt-24 text-center animate-fade-in-up" style={{animationDelay: '600ms'}}>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="group p-6 rounded-2xl bg-white/50 backdrop-blur-sm border border-white/20 hover:bg-white/80 transition-all duration-400 transform hover:-translate-y-2">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-2xl">🎓</span>
+                </div>
+                <h4 className="text-xl font-bold text-secondary-900 mb-2">Certified Experts</h4>
+                <p className="text-secondary-600">Industry professionals with 10+ years experience</p>
+              </div>
+              
+              <div className="group p-6 rounded-2xl bg-white/50 backdrop-blur-sm border border-white/20 hover:bg-white/80 transition-all duration-400 transform hover:-translate-y-2">
+                <div className="w-16 h-16 bg-gradient-to-br from-success-500 to-success-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-2xl">⚡</span>
+                </div>
+                <h4 className="text-xl font-bold text-secondary-900 mb-2">Instant Results</h4>
+                <p className="text-secondary-600">Get your assessment results immediately</p>
+              </div>
+              
+              <div className="group p-6 rounded-2xl bg-white/50 backdrop-blur-sm border border-white/20 hover:bg-white/80 transition-all duration-400 transform hover:-translate-y-2">
+                <div className="w-16 h-16 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-2xl">🔒</span>
+                </div>
+                <h4 className="text-xl font-bold text-secondary-900 mb-2">100% Confidential</h4>
+                <p className="text-secondary-600">Your data is secure and completely private</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
               </button>
             </div>
           </div>
@@ -625,52 +731,142 @@ const SinglePage = () => {
       </section>
 
       {/* Assessment Section */}
-      <section id="assessment" className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Career Assessment</h2>
-            <p className="text-xl text-gray-600">
-              Discover your ideal career path through our comprehensive assessment
+      <section id="assessment" className="relative py-32 bg-gradient-to-br from-white via-primary-50/30 to-accent-50/20 overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-1/4 w-64 h-64 bg-primary-200/20 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-accent-200/15 rounded-full blur-3xl animate-float" style={{animationDelay: '3s'}}></div>
+        </div>
+
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <div className="mb-6">
+              <span className="inline-block px-6 py-3 bg-gradient-to-r from-primary-500 to-accent-500 text-white text-sm font-bold rounded-full shadow-glow animate-pulse-glow">
+                🧠 AI-Powered Assessment
+              </span>
+            </div>
+            <h2 className="section-title gradient-text-animated">
+              Discover Your
+              <span className="block text-shimmer">Perfect Career Match</span>
+            </h2>
+            <p className="section-subtitle animate-fade-in-up" style={{animationDelay: '200ms'}}>
+              Take our comprehensive assessment and unlock personalized career insights powered by advanced AI algorithms.
             </p>
           </div>
 
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            {!showResults ? (
-              <div>
-                <div className="mb-8">
-                  <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-2xl font-bold text-gray-900">Career Assessment</h3>
-                    <span className="text-sm text-gray-500">
-                      Question {currentQuestion + 1} of {questions.length}
-                    </span>
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-accent-500/10 rounded-4xl blur-xl"></div>
+            <div className="relative card-elevated shimmer-effect animate-fade-in-up" style={{animationDelay: '400ms'}}>
+              {!showResults ? (
+                <div className="animate-slide-up">
+                  <div className="mb-10">
+                    <div className="flex justify-between items-center mb-6">
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center animate-pulse-glow">
+                          <span className="text-white font-bold text-lg">{currentQuestion + 1}</span>
+                        </div>
+                        <h3 className="text-3xl font-bold bg-gradient-to-r from-secondary-900 to-primary-600 bg-clip-text text-transparent">
+                          Career Assessment
+                        </h3>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-sm font-medium text-secondary-500 mb-1">Progress</div>
+                        <span className="text-lg font-bold text-primary-600">
+                          {currentQuestion + 1} of {questions.length}
+                        </span>
+                      </div>
+                    </div>
+                    
+                    {/* Enhanced Progress Bar */}
+                    <div className="relative">
+                      <div className="w-full bg-secondary-200 rounded-full h-3 overflow-hidden">
+                        <div
+                          className="bg-gradient-to-r from-primary-500 to-accent-500 h-3 rounded-full transition-all duration-800 ease-out relative overflow-hidden"
+                          style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
+                        >
+                          <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent animate-shimmer"></div>
+                        </div>
+                      </div>
+                      <div className="flex justify-between text-xs text-secondary-500 mt-2">
+                        <span>Start</span>
+                        <span className="font-medium">{Math.round(((currentQuestion + 1) / questions.length) * 100)}% Complete</span>
+                        <span>Finish</span>
+                      </div>
+                    </div>
                   </div>
-                  
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div
-                      className="bg-primary-600 h-2 rounded-full transition-all duration-300"
-                      style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
-                    ></div>
-                  </div>
-                </div>
 
-                <div className="mb-8">
-                  <h4 className="text-xl font-semibold text-gray-900 mb-6">
-                    {questions[currentQuestion].question}
-                  </h4>
-                  
-                  <div className="space-y-3">
-                    {questions[currentQuestion].options.map((option, index) => (
-                      <button
-                        key={index}
-                        onClick={() => handleAnswer(option)}
-                        className="w-full text-left p-4 border border-gray-300 rounded-lg hover:border-primary-500 hover:bg-primary-50 transition-colors"
-                      >
-                        {option.text}
-                      </button>
-                    ))}
+                  <div className="mb-10 animate-fade-in-up" key={currentQuestion}>
+                    <div className="mb-8 p-6 bg-gradient-to-r from-primary-50 to-accent-50 rounded-3xl border border-primary-100">
+                      <h4 className="text-2xl font-bold text-secondary-900 mb-4 leading-relaxed">
+                        {questions[currentQuestion].question}
+                      </h4>
+                      <div className="flex items-center text-secondary-600">
+                        <div className="w-2 h-2 bg-primary-500 rounded-full mr-3 animate-pulse"></div>
+                        <span className="text-sm font-medium">Choose the option that best describes you</span>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-4 stagger-animation">
+                      {questions[currentQuestion].options.map((option, index) => (
+                        <button
+                          key={index}
+                          onClick={() => handleAnswer(option)}
+                          className="group w-full text-left p-6 border-2 border-secondary-200 rounded-2xl hover:border-primary-400 hover:bg-gradient-to-r hover:from-primary-50 hover:to-accent-50 transition-all duration-400 transform hover:scale-[1.02] hover:-translate-y-1 hover:shadow-medium animate-fade-in-right"
+                          style={{'--stagger': index}}
+                        >
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-secondary-100 to-secondary-200 group-hover:from-primary-500 group-hover:to-accent-500 rounded-xl flex items-center justify-center mr-4 transition-all duration-300">
+                              <span className="text-secondary-600 group-hover:text-white font-bold text-sm transition-colors duration-300">
+                                {String.fromCharCode(65 + index)}
+                              </span>
+                            </div>
+                            <span className="text-lg font-medium text-secondary-700 group-hover:text-secondary-900 transition-colors duration-300">
+                              {option.text}
+                            </span>
+                            <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              <svg className="w-6 h-6 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                              </svg>
+                            </div>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Question Navigation */}
+                  <div className="flex justify-between items-center pt-6 border-t border-secondary-200">
+                    <button
+                      onClick={() => setCurrentQuestion(Math.max(0, currentQuestion - 1))}
+                      disabled={currentQuestion === 0}
+                      className="flex items-center px-6 py-3 text-secondary-600 hover:text-primary-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300"
+                    >
+                      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                      </svg>
+                      Previous
+                    </button>
+                    
+                    <div className="flex space-x-2">
+                      {questions.map((_, index) => (
+                        <div
+                          key={index}
+                          className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                            index === currentQuestion
+                              ? 'bg-primary-500 scale-125'
+                              : index < currentQuestion
+                              ? 'bg-success-500'
+                              : 'bg-secondary-300'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                    
+                    <div className="text-sm text-secondary-500 font-medium">
+                      {currentQuestion + 1} / {questions.length}
+                    </div>
                   </div>
                 </div>
-              </div>
             ) : (
               <div>
                 <div className="text-center mb-8">
@@ -853,42 +1049,123 @@ const SinglePage = () => {
       </section>
 
       {/* Blog Section */}
-      <section id="blog" className="py-20 bg-white">
+      <section id="blog" className="py-24 bg-gradient-to-b from-white to-secondary-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Career Resources & Blog</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover valuable insights, tips, and guidance to help you navigate your career journey.
+          <div className="text-center mb-20">
+            <div className="mb-6">
+              <span className="inline-block px-6 py-3 bg-gradient-to-r from-accent-500 to-primary-500 text-white text-sm font-bold rounded-full shadow-glow animate-bounce-gentle">
+                📚 Knowledge Hub
+              </span>
+            </div>
+            <h2 className="section-title gradient-text-animated">
+              Career Resources &
+              <span className="block">Expert Insights</span>
+            </h2>
+            <p className="section-subtitle animate-fade-in-up" style={{animationDelay: '200ms'}}>
+              Discover valuable insights, expert tips, and comprehensive guidance to accelerate your professional growth.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {Array.isArray(blogPosts) && blogPosts.map((post) => (
-              <article key={post.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="p-6">
-                  <div className="flex items-center text-sm text-gray-500 mb-2">
-                    <span>{post.category}</span>
-                    <span className="mx-2">•</span>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+            {Array.isArray(blogPosts) && blogPosts.length > 0 ? blogPosts.map((post, index) => (
+              <article key={post.id} className="group card-interactive animate-fade-in-up hover-lift" style={{animationDelay: `${index * 100}ms`}}>
+                <div className="relative overflow-hidden rounded-2xl mb-6">
+                  <div className="w-full h-48 bg-gradient-to-br from-primary-100 to-accent-100 flex items-center justify-center">
+                    <div className="text-6xl opacity-20 group-hover:scale-110 transition-transform duration-500">📖</div>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400"></div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center text-sm text-secondary-500 space-x-3">
+                    <span className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full font-medium">{post.category}</span>
+                    <span>•</span>
                     <span>{new Date(post.publishedAt).toLocaleDateString()}</span>
                   </div>
                   
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  <h3 className="text-xl font-bold text-secondary-900 group-hover:text-primary-600 transition-colors duration-300 leading-tight">
                     {post.title}
                   </h3>
+                  <p className="text-secondary-600 leading-relaxed">{post.excerpt}</p>
                   
-                  <p className="text-gray-600 mb-4">
-                    {post.excerpt}
-                  </p>
-                  
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-500">By {post.author}</span>
-                    <button className="text-primary-600 hover:text-primary-700 font-medium">
-                      Read More →
+                  <div className="flex items-center justify-between pt-4 border-t border-secondary-100">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-accent-500 rounded-full flex items-center justify-center">
+                        <span className="text-white font-bold text-sm">{post.author?.charAt(0) || 'A'}</span>
+                      </div>
+                      <span className="text-sm font-medium text-secondary-700">{post.author}</span>
+                    </div>
+                    <button className="group/btn flex items-center text-primary-600 hover:text-primary-700 font-semibold text-sm transition-colors duration-300">
+                      Read More
+                      <svg className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
                     </button>
                   </div>
                 </div>
               </article>
-            ))}
+            )) : (
+              // Enhanced placeholder cards
+              [...Array(6)].map((_, index) => (
+                <article key={index} className="group card-interactive animate-fade-in-up hover-lift" style={{animationDelay: `${index * 100}ms`}}>
+                  <div className="relative overflow-hidden rounded-2xl mb-6">
+                    <div className="w-full h-48 bg-gradient-to-br from-primary-100 to-accent-100 flex items-center justify-center">
+                      <div className="text-6xl opacity-20 group-hover:scale-110 transition-transform duration-500">
+                        {['💼', '🎯', '📈', '🚀', '💡', '🌟'][index]}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div className="flex items-center text-sm text-secondary-500 space-x-3">
+                      <span className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full font-medium">Career Tips</span>
+                      <span>•</span>
+                      <span>Dec 2024</span>
+                    </div>
+                    
+                    <h3 className="text-xl font-bold text-secondary-900 group-hover:text-primary-600 transition-colors duration-300 leading-tight">
+                      {[
+                        'Essential Career Planning Strategies for 2025',
+                        'How to Ace Your Next Job Interview',
+                        'Building a Professional Network That Works',
+                        'Mastering Remote Work Skills',
+                        'Career Transition: A Complete Guide',
+                        'Leadership Skills for Career Growth'
+                      ][index]}
+                    </h3>
+                    <p className="text-secondary-600 leading-relaxed">
+                      {[
+                        'Discover proven strategies to plan and accelerate your career growth in the modern workplace.',
+                        'Learn insider tips and techniques to stand out in interviews and land your dream job.',
+                        'Build meaningful professional relationships that open doors to new opportunities.',
+                        'Master the essential skills needed to thrive in remote and hybrid work environments.',
+                        'Navigate career changes successfully with our comprehensive transition framework.',
+                        'Develop leadership qualities that will set you apart and drive your career forward.'
+                      ][index]}
+                    </p>
+                    
+                    <div className="flex items-center justify-between pt-4 border-t border-secondary-100">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-accent-500 rounded-full flex items-center justify-center">
+                          <span className="text-white font-bold text-sm">
+                            {['M', 'S', 'A', 'R', 'L', 'K'][index]}
+                          </span>
+                        </div>
+                        <span className="text-sm font-medium text-secondary-700">
+                          {['MONIKA M', 'Sarah Johnson', 'Alex Chen', 'Rachel Davis', 'Lisa Wang', 'Kevin Brown'][index]}
+                        </span>
+                      </div>
+                      <button className="group/btn flex items-center text-primary-600 hover:text-primary-700 font-semibold text-sm transition-colors duration-300">
+                        Read More
+                        <svg className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              ))
+            )}
           </div>
         </div>
       </section>
