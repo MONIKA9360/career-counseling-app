@@ -562,11 +562,11 @@ const SinglePage = () => {
                 ✨ Premium Services
               </span>
             </div>
-            <h2 className="section-title gradient-text-animated">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-secondary-900 mb-6">
               Transform Your
-              <span className="block text-shimmer">Career Journey</span>
+              <span className="block bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">Career Journey</span>
             </h2>
-            <p className="section-subtitle animate-fade-in-up" style={{animationDelay: '200ms'}}>
+            <p className="text-xl text-secondary-600 max-w-4xl mx-auto leading-relaxed">
               Unlock your potential with our comprehensive suite of career development services designed for ambitious professionals.
             </p>
           </div>
@@ -575,7 +575,7 @@ const SinglePage = () => {
             {/* Free Assessment Card */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-r from-success-400 to-primary-500 rounded-4xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-600 animate-pulse-glow"></div>
-              <div className="relative card-elevated shimmer-effect animate-fade-in-left">
+              <div className="relative bg-white rounded-3xl shadow-large hover:shadow-2xl p-10 border border-secondary-100 transition-all duration-600 transform hover:-translate-y-4">
                 <div className="absolute top-6 right-6">
                   <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-success-500 to-success-600 text-white text-xs font-bold rounded-full animate-bounce-gentle">
                     🎯 POPULAR
@@ -635,7 +635,7 @@ const SinglePage = () => {
             {/* Premium Counseling Card */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-accent-500 rounded-4xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-600 animate-pulse-glow"></div>
-              <div className="relative card-elevated shimmer-effect animate-fade-in-right">
+              <div className="relative bg-white rounded-3xl shadow-large hover:shadow-2xl p-10 border border-secondary-100 transition-all duration-600 transform hover:-translate-y-4">
                 <div className="absolute top-6 right-6">
                   <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-accent-500 to-primary-600 text-white text-xs font-bold rounded-full animate-bounce-gentle">
                     👑 PREMIUM
@@ -756,7 +756,7 @@ const SinglePage = () => {
 
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-accent-500/10 rounded-4xl blur-xl"></div>
-            <div className="relative card-elevated shimmer-effect animate-fade-in-up" style={{animationDelay: '400ms'}}>
+            <div className="relative bg-white rounded-3xl shadow-large hover:shadow-2xl p-10 border border-secondary-100 transition-all duration-600">
               {!showResults ? (
                 <div className="animate-slide-up">
                   <div className="mb-10">
@@ -1057,18 +1057,18 @@ const SinglePage = () => {
                 📚 Knowledge Hub
               </span>
             </div>
-            <h2 className="section-title gradient-text-animated">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-secondary-900 mb-6">
               Career Resources &
-              <span className="block">Expert Insights</span>
+              <span className="block bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">Expert Insights</span>
             </h2>
-            <p className="section-subtitle animate-fade-in-up" style={{animationDelay: '200ms'}}>
+            <p className="text-xl text-secondary-600 max-w-4xl mx-auto leading-relaxed">
               Discover valuable insights, expert tips, and comprehensive guidance to accelerate your professional growth.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             {Array.isArray(blogPosts) && blogPosts.length > 0 ? blogPosts.map((post, index) => (
-              <article key={post.id} className="group card-interactive animate-fade-in-up hover-lift" style={{animationDelay: `${index * 100}ms`}}>
+              <article key={post.id} className="group bg-white rounded-3xl shadow-soft hover:shadow-xl p-8 border border-secondary-100 transition-all duration-500 transform hover:-translate-y-2">
                 <div className="relative overflow-hidden rounded-2xl mb-6">
                   <div className="w-full h-48 bg-gradient-to-br from-primary-100 to-accent-100 flex items-center justify-center">
                     <div className="text-6xl opacity-20 group-hover:scale-110 transition-transform duration-500">📖</div>
@@ -1107,7 +1107,7 @@ const SinglePage = () => {
             )) : (
               // Enhanced placeholder cards
               [...Array(6)].map((_, index) => (
-                <article key={index} className="group card-interactive animate-fade-in-up hover-lift" style={{animationDelay: `${index * 100}ms`}}>
+                <article key={index} className="group bg-white rounded-3xl shadow-soft hover:shadow-xl p-8 border border-secondary-100 transition-all duration-500 transform hover:-translate-y-2">
                   <div className="relative overflow-hidden rounded-2xl mb-6">
                     <div className="w-full h-48 bg-gradient-to-br from-primary-100 to-accent-100 flex items-center justify-center">
                       <div className="text-6xl opacity-20 group-hover:scale-110 transition-transform duration-500">
