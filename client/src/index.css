@@ -259,72 +259,195 @@
   background-clip: text;
 }
 
-/* Enhanced hover states */
-.hover-rotate-3d {
-  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+/* Enhanced professional animations */
+@keyframes morphBorder {
+  0%, 100% { border-radius: 1.5rem; transform: scale(1); }
+  25% { border-radius: 2rem; transform: scale(1.02); }
+  50% { border-radius: 1rem; transform: scale(1.01); }
+  75% { border-radius: 2.5rem; transform: scale(1.03); }
 }
 
-.hover-rotate-3d:hover {
-  transform: perspective(1000px) rotateX(10deg) rotateY(10deg) scale(1.05);
+@keyframes liquidMove {
+  0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
+  25% { transform: translateX(10px) translateY(-5px) rotate(90deg); }
+  50% { transform: translateX(-5px) translateY(10px) rotate(180deg); }
+  75% { transform: translateX(-10px) translateY(-10px) rotate(270deg); }
 }
 
-.hover-bounce-gentle {
-  transition: transform 0.3s ease;
+@keyframes particleFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+  33% { transform: translateY(-20px) rotate(120deg); opacity: 1; }
+  66% { transform: translateY(10px) rotate(240deg); opacity: 0.8; }
 }
 
-.hover-bounce-gentle:hover {
-  animation: bounceGentle 0.6s ease-in-out;
+@keyframes magneticPull {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.1) rotate(5deg); }
+  100% { transform: scale(1.05) rotate(-2deg); }
 }
 
-/* Magnetic effect */
-.magnetic {
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+@keyframes neonGlow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.3),
+                0 0 40px rgba(14, 165, 233, 0.2),
+                0 0 60px rgba(14, 165, 233, 0.1);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(14, 165, 233, 0.6),
+                0 0 60px rgba(14, 165, 233, 0.4),
+                0 0 90px rgba(14, 165, 233, 0.2);
+  }
 }
 
-.magnetic:hover {
-  transform: scale(1.1) rotate(2deg);
+@keyframes holographicShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* Glitch effect for special elements */
-.glitch {
+.animate-morph-border {
+  animation: morphBorder 4s ease-in-out infinite;
+}
+
+.animate-liquid-move {
+  animation: liquidMove 8s ease-in-out infinite;
+}
+
+.animate-particle-float {
+  animation: particleFloat 6s ease-in-out infinite;
+}
+
+.animate-magnetic-pull {
+  animation: magneticPull 0.6s ease-out;
+}
+
+.animate-neon-glow {
+  animation: neonGlow 2s ease-in-out infinite;
+}
+
+.holographic-bg {
+  background: linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0, #ff0080);
+  background-size: 400% 400%;
+  animation: holographicShift 3s ease infinite;
+}
+
+/* Advanced hover effects */
+.hover-3d-lift {
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  transform-style: preserve-3d;
+}
+
+.hover-3d-lift:hover {
+  transform: perspective(1000px) rotateX(10deg) rotateY(10deg) translateZ(20px) scale(1.05);
+}
+
+.hover-magnetic {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hover-magnetic:hover {
+  animation: magneticPull 0.6s ease-out;
+}
+
+.hover-liquid {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-liquid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.5s;
+}
+
+.hover-liquid:hover::before {
+  left: 100%;
+}
+
+/* Particle system */
+.particle-system {
   position: relative;
 }
 
-.glitch::before,
-.glitch::after {
-  content: attr(data-text);
+.particle-system::before,
+.particle-system::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.8), transparent);
+  border-radius: 50%;
+  animation: particleFloat 4s ease-in-out infinite;
+}
+
+.particle-system::before {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.particle-system::after {
+  top: 60%;
+  right: 15%;
+  animation-delay: 2s;
+}
+
+/* Glass morphism enhanced */
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.glass-morphism-strong {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+}
+
+/* Interactive button effects */
+.btn-interactive {
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.btn-interactive::before {
+  content: '';
   position: absolute;
   top: 0;
-  left: 0;
+  left: -100%;
   width: 100%;
   height: 100%;
-  opacity: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.6s;
 }
 
-.glitch:hover::before {
-  animation: glitch-1 0.3s ease-in-out;
-  color: #ff0000;
-  z-index: -1;
+.btn-interactive:hover::before {
+  left: 100%;
 }
 
-.glitch:hover::after {
-  animation: glitch-2 0.3s ease-in-out;
-  color: #00ff00;
-  z-index: -2;
+.btn-interactive:active {
+  transform: scale(0.98) translateZ(-10px);
 }
 
-@keyframes glitch-1 {
-  0%, 100% { transform: translate(0); opacity: 0; }
-  20% { transform: translate(-2px, 2px); opacity: 1; }
-  40% { transform: translate(-2px, -2px); opacity: 1; }
-  60% { transform: translate(2px, 2px); opacity: 1; }
-  80% { transform: translate(2px, -2px); opacity: 1; }
+/* Staggered animations */
+.stagger-children > * {
+  animation-delay: calc(var(--stagger, 0) * 100ms);
 }
 
-@keyframes glitch-2 {
-  0%, 100% { transform: translate(0); opacity: 0; }
-  20% { transform: translate(2px, 2px); opacity: 1; }
-  40% { transform: translate(2px, -2px); opacity: 1; }
-  60% { transform: translate(-2px, 2px); opacity: 1; }
-  80% { transform: translate(-2px, -2px); opacity: 1; }
+/* Responsive animations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

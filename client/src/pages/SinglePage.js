@@ -310,12 +310,16 @@ const SinglePage = () => {
             <div className="hidden md:flex items-center space-x-4">
               {user ? (
                 <div className="flex items-center space-x-4">
-                  <div className="flex items-center space-x-2 text-gray-700">
-                    <UserCircleIcon className="h-6 w-6" />
-                    <span>{user.name}</span>
+                  <div className="group flex items-center space-x-3 px-4 py-2 bg-gradient-to-r from-primary-50 to-accent-50 rounded-2xl border border-primary-200 hover:border-primary-300 transition-all duration-300 hover:shadow-soft">
+                    <div className="relative">
+                      <UserCircleIcon className="h-8 w-8 text-primary-600 group-hover:scale-110 transition-transform duration-300" />
+                      <div className="absolute -top-1 -right-1 w-3 h-3 bg-success-500 rounded-full animate-pulse"></div>
+                    </div>
+                    <span className="font-medium text-secondary-700 group-hover:text-primary-600 transition-colors duration-300">{user.name}</span>
                   </div>
-                  <button onClick={logout} className="btn-secondary">
-                    Logout
+                  <button onClick={logout} className="group relative overflow-hidden bg-gradient-to-r from-secondary-100 to-secondary-200 hover:from-error-500 hover:to-error-600 text-secondary-700 hover:text-white font-semibold py-2 px-6 rounded-xl transition-all duration-400 transform hover:scale-105 hover:-translate-y-0.5 shadow-soft hover:shadow-medium">
+                    <span className="relative z-10">Logout</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-error-500 to-error-600 opacity-0 group-hover:opacity-100 transition-opacity duration-400"></div>
                   </button>
                 </div>
               ) : (
@@ -325,18 +329,25 @@ const SinglePage = () => {
                       setAuthMode('login');
                       setShowAuthModal(true);
                     }}
-                    className="text-gray-700 hover:text-primary-600"
+                    className="group relative px-6 py-2 text-secondary-700 hover:text-primary-600 font-medium transition-all duration-300 before:absolute before:inset-0 before:bg-primary-50 before:rounded-xl before:scale-0 hover:before:scale-100 before:transition-transform before:duration-300"
                   >
-                    Login
+                    <span className="relative z-10">Login</span>
                   </button>
                   <button
                     onClick={() => {
                       setAuthMode('register');
                       setShowAuthModal(true);
                     }}
-                    className="btn-primary"
+                    className="group relative overflow-hidden bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-accent-500 text-white font-semibold py-3 px-8 rounded-2xl transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 shadow-medium hover:shadow-xl"
                   >
-                    Sign Up
+                    <span className="relative z-10 flex items-center">
+                      Get Started
+                      <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:scale-110 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-accent-500 to-primary-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </button>
                 </div>
               )}
@@ -346,13 +357,16 @@ const SinglePage = () => {
             <div className="md:hidden flex items-center">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="text-gray-700 hover:text-primary-600"
+                className="group relative p-3 text-secondary-700 hover:text-primary-600 bg-secondary-50 hover:bg-primary-50 rounded-2xl transition-all duration-300 transform hover:scale-110 hover:rotate-180"
               >
-                {mobileMenuOpen ? (
-                  <XMarkIcon className="h-6 w-6" />
-                ) : (
-                  <Bars3Icon className="h-6 w-6" />
-                )}
+                <div className="relative w-6 h-6">
+                  {mobileMenuOpen ? (
+                    <XMarkIcon className="h-6 w-6 group-hover:rotate-90 transition-transform duration-300" />
+                  ) : (
+                    <Bars3Icon className="h-6 w-6 group-hover:scale-110 transition-transform duration-300" />
+                  )}
+                </div>
+                <div className="absolute inset-0 bg-primary-100 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
             </div>
           </div>
@@ -806,29 +820,43 @@ const SinglePage = () => {
                       </div>
                     </div>
                     
-                    <div className="space-y-4 stagger-animation">
+                    <div className="space-y-4">
                       {questions[currentQuestion].options.map((option, index) => (
                         <button
                           key={index}
                           onClick={() => handleAnswer(option)}
-                          className="group w-full text-left p-6 border-2 border-secondary-200 rounded-2xl hover:border-primary-400 hover:bg-gradient-to-r hover:from-primary-50 hover:to-accent-50 transition-all duration-400 transform hover:scale-[1.02] hover:-translate-y-1 hover:shadow-medium animate-fade-in-right"
-                          style={{'--stagger': index}}
+                          className="group relative w-full text-left p-6 border-2 border-secondary-200 rounded-3xl hover:border-primary-400 transition-all duration-500 transform hover:scale-[1.03] hover:-translate-y-2 hover:shadow-xl overflow-hidden"
+                          style={{animationDelay: `${index * 100}ms`}}
                         >
-                          <div className="flex items-center">
-                            <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-secondary-100 to-secondary-200 group-hover:from-primary-500 group-hover:to-accent-500 rounded-xl flex items-center justify-center mr-4 transition-all duration-300">
-                              <span className="text-secondary-600 group-hover:text-white font-bold text-sm transition-colors duration-300">
+                          {/* Background gradient overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-r from-primary-50 via-accent-50 to-primary-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                          
+                          {/* Shimmer effect */}
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                          
+                          <div className="relative flex items-center">
+                            <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-secondary-100 to-secondary-200 group-hover:from-primary-500 group-hover:to-accent-500 rounded-2xl flex items-center justify-center mr-6 transition-all duration-400 transform group-hover:scale-110 group-hover:rotate-12 shadow-soft group-hover:shadow-medium">
+                              <span className="text-secondary-600 group-hover:text-white font-bold text-lg transition-all duration-300 transform group-hover:scale-110">
                                 {String.fromCharCode(65 + index)}
                               </span>
                             </div>
-                            <span className="text-lg font-medium text-secondary-700 group-hover:text-secondary-900 transition-colors duration-300">
-                              {option.text}
-                            </span>
-                            <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                              <svg className="w-6 h-6 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                              </svg>
+                            <div className="flex-1">
+                              <span className="text-lg font-semibold text-secondary-700 group-hover:text-secondary-900 transition-colors duration-300 block leading-relaxed">
+                                {option.text}
+                              </span>
+                              <div className="w-0 group-hover:w-full h-0.5 bg-gradient-to-r from-primary-500 to-accent-500 transition-all duration-500 mt-2"></div>
+                            </div>
+                            <div className="ml-4 opacity-0 group-hover:opacity-100 transition-all duration-400 transform translate-x-4 group-hover:translate-x-0">
+                              <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full flex items-center justify-center shadow-medium">
+                                <svg className="w-5 h-5 text-white transform group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                </svg>
+                              </div>
                             </div>
                           </div>
+                          
+                          {/* Pulse effect on hover */}
+                          <div className="absolute inset-0 border-2 border-primary-400 rounded-3xl opacity-0 group-hover:opacity-100 animate-ping"></div>
                         </button>
                       ))}
                     </div>
@@ -1171,81 +1199,124 @@ const SinglePage = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Have questions about our services? We're here to help you on your career journey.
+      <section id="contact" className="py-24 bg-gradient-to-b from-secondary-50 to-white relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-500/5 to-accent-500/5"></div>
+        <div className="absolute top-20 left-10 w-32 h-32 bg-primary-400/10 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-accent-400/10 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <div className="mb-6">
+              <span className="inline-block px-6 py-3 bg-gradient-to-r from-primary-500 to-accent-500 text-white text-sm font-bold rounded-full shadow-glow animate-bounce-gentle">
+                💬 Get In Touch
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-secondary-900 mb-6">
+              Let's Start Your
+              <span className="block bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">Career Journey</span>
+            </h2>
+            <p className="text-xl text-secondary-600 max-w-4xl mx-auto leading-relaxed">
+              Have questions about our services? Ready to transform your career? We're here to guide you every step of the way.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h3>
-              
-              <form onSubmit={handleContactSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      value={contactForm.name}
-                      onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
-                      className="input-field"
-                      required
-                    />
+          <div className="grid lg:grid-cols-2 gap-16">
+            {/* Contact Form */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-accent-500/20 rounded-4xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-600"></div>
+              <div className="relative bg-white/95 backdrop-blur-sm rounded-4xl shadow-xl hover:shadow-2xl p-10 border border-secondary-100/50 transition-all duration-600 transform hover:-translate-y-2">
+                <div className="mb-8">
+                  <h3 className="text-3xl font-bold bg-gradient-to-r from-secondary-900 to-primary-600 bg-clip-text text-transparent mb-4">Send us a message</h3>
+                  <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full"></div>
+                </div>
+                
+                <form onSubmit={handleContactSubmit} className="space-y-8">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="group">
+                      <label className="block text-sm font-semibold text-secondary-700 mb-3 group-focus-within:text-primary-600 transition-colors duration-300">
+                        Full Name
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="text"
+                          value={contactForm.name}
+                          onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
+                          className="w-full px-6 py-4 border-2 border-secondary-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-primary-100 focus:border-primary-500 transition-all duration-400 bg-white/90 backdrop-blur-sm placeholder-secondary-400 hover:border-primary-300 transform focus:scale-[1.02] hover:shadow-soft focus:shadow-medium"
+                          placeholder="Enter your full name"
+                          required
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-r from-primary-50 to-accent-50 rounded-2xl opacity-0 focus-within:opacity-100 transition-opacity duration-300 -z-10"></div>
+                      </div>
+                    </div>
+                    
+                    <div className="group">
+                      <label className="block text-sm font-semibold text-secondary-700 mb-3 group-focus-within:text-primary-600 transition-colors duration-300">
+                        Email Address
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="email"
+                          value={contactForm.email}
+                          onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
+                          className="w-full px-6 py-4 border-2 border-secondary-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-primary-100 focus:border-primary-500 transition-all duration-400 bg-white/90 backdrop-blur-sm placeholder-secondary-400 hover:border-primary-300 transform focus:scale-[1.02] hover:shadow-soft focus:shadow-medium"
+                          placeholder="your.email@example.com"
+                          required
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-r from-primary-50 to-accent-50 rounded-2xl opacity-0 focus-within:opacity-100 transition-opacity duration-300 -z-10"></div>
+                      </div>
+                    </div>
                   </div>
                   
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Email
+                  <div className="group">
+                    <label className="block text-sm font-semibold text-secondary-700 mb-3 group-focus-within:text-primary-600 transition-colors duration-300">
+                      Subject
                     </label>
-                    <input
-                      type="email"
-                      value={contactForm.email}
-                      onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
-                      className="input-field"
-                      required
-                    />
+                    <div className="relative">
+                      <input
+                        type="text"
+                        value={contactForm.subject}
+                        onChange={(e) => setContactForm({ ...contactForm, subject: e.target.value })}
+                        className="w-full px-6 py-4 border-2 border-secondary-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-primary-100 focus:border-primary-500 transition-all duration-400 bg-white/90 backdrop-blur-sm placeholder-secondary-400 hover:border-primary-300 transform focus:scale-[1.02] hover:shadow-soft focus:shadow-medium"
+                        placeholder="What can we help you with?"
+                        required
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary-50 to-accent-50 rounded-2xl opacity-0 focus-within:opacity-100 transition-opacity duration-300 -z-10"></div>
+                    </div>
                   </div>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    value={contactForm.subject}
-                    onChange={(e) => setContactForm({ ...contactForm, subject: e.target.value })}
-                    className="input-field"
-                    required
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    value={contactForm.message}
-                    onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
-                    rows="6"
-                    className="input-field"
-                    required
-                  />
-                </div>
-                
-                <button
-                  type="submit"
-                  className="w-full btn-primary"
-                >
-                  Send Message
-                </button>
-              </form>
+                  
+                  <div className="group">
+                    <label className="block text-sm font-semibold text-secondary-700 mb-3 group-focus-within:text-primary-600 transition-colors duration-300">
+                      Message
+                    </label>
+                    <div className="relative">
+                      <textarea
+                        value={contactForm.message}
+                        onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
+                        rows="6"
+                        className="w-full px-6 py-4 border-2 border-secondary-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-primary-100 focus:border-primary-500 transition-all duration-400 bg-white/90 backdrop-blur-sm placeholder-secondary-400 hover:border-primary-300 transform focus:scale-[1.02] hover:shadow-soft focus:shadow-medium resize-none"
+                        placeholder="Tell us about your career goals and how we can help..."
+                        required
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary-50 to-accent-50 rounded-2xl opacity-0 focus-within:opacity-100 transition-opacity duration-300 -z-10"></div>
+                    </div>
+                  </div>
+                  
+                  <button
+                    type="submit"
+                    className="group relative w-full overflow-hidden bg-gradient-to-r from-primary-500 to-accent-500 hover:from-primary-600 hover:to-accent-600 text-white font-bold py-5 px-8 rounded-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 shadow-xl hover:shadow-2xl"
+                  >
+                    <span className="relative z-10 flex items-center justify-center">
+                      Send Message
+                      <svg className="ml-3 w-5 h-5 group-hover:translate-x-1 group-hover:scale-110 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                      </svg>
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-accent-600 to-primary-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </button>
+                </form>
+              </div>
             </div>
 
             <div className="space-y-8">
