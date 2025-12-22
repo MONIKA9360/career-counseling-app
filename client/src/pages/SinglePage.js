@@ -254,11 +254,19 @@ const SinglePage = () => {
     e.preventDefault();
     
     try {
-      await axios.post('/contact', contactForm);
-      toast.success('Message sent successfully!');
+      const response = await axios.post('/contact', contactForm);
+      
+      // Show success message based on server response
+      if (response.data.success) {
+        toast.success(response.data.message || 'Message sent successfully! Check your email for confirmation.');
+      } else {
+        toast.success('Message sent successfully!');
+      }
+      
       setContactForm({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
-      toast.error('Failed to send message');
+      console.error('Contact form error:', error);
+      toast.error('Failed to send message. Please try again.');
     }
   };
 
