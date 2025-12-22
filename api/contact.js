@@ -1,6 +1,3 @@
-const { body, validationResult } = require('express-validator');
-const { sendContactNotification, sendContactConfirmation } = require('../server/utils/emailService');
-
 module.exports = async (req, res) => {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -36,31 +33,15 @@ module.exports = async (req, res) => {
     // Log the submission
     console.log('Contact form submission:', { name, email, message });
     
-    try {
-      // Send notification email to admin
-      await sendContactNotification({ name, email, message });
-      console.log('Admin notification email sent successfully');
-      
-      // Send confirmation email to user
-      await sendContactConfirmation({ name, email, message });
-      console.log('User confirmation email sent successfully');
-      
-      res.json({ 
-        message: 'Thank you for your message! We have sent you a confirmation email and will get back to you soon.',
-        success: true 
-      });
-    } catch (emailError) {
-      console.error('Email sending error:', emailError);
-      
-      // Still return success to user, but log the email error
-      res.json({ 
-        message: 'Thank you for your message. We will get back to you soon!',
-        success: true,
-        emailStatus: 'Email notification may be delayed'
-      });
-    }
+    // For now, just return success without sending emails to test the API
+    res.json({ 
+      message: 'Thank you for your message! We will get back to you soon.',
+      success: true,
+      debug: 'API is working - email functionality will be added once environment variables are set'
+    });
+    
   } catch (error) {
     console.error('Contact form error:', error);
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
