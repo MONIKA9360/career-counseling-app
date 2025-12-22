@@ -6,6 +6,7 @@ import {
   AcademicCapIcon, 
   UserGroupIcon, 
   ChartBarIcon,
+  UserCircleIcon,
   XMarkIcon,
   Bars3Icon
 } from '@heroicons/react/24/outline';
@@ -99,28 +100,30 @@ const SinglePage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
-      <nav className="bg-white shadow-lg sticky top-0 z-50">
+      <nav className="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
+          <div className="flex justify-between h-18">
             <div className="flex items-center">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
                   <span className="text-white font-bold text-lg">C</span>
                 </div>
-                <span className="text-2xl font-bold text-gray-900">CareerGuide</span>
+                <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  CareerGuide
+                </span>
               </div>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-1">
               {navigation.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.id)}
-                  className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 transform hover:scale-105 ${
                     activeSection === item.id
-                      ? 'text-blue-600 bg-blue-50'
-                      : 'text-gray-700 hover:text-blue-600'
+                      ? 'text-blue-600 bg-blue-50 shadow-md'
+                      : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
                   }`}
                 >
                   {item.name}
@@ -132,8 +135,14 @@ const SinglePage = () => {
             <div className="hidden md:flex items-center space-x-4">
               {user ? (
                 <div className="flex items-center space-x-4">
-                  <span className="text-gray-700">Welcome, {user.name}</span>
-                  <button onClick={logout} className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700">
+                  <div className="flex items-center space-x-3 px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl border border-blue-200 hover:border-blue-300 transition-all duration-300 hover:shadow-md">
+                    <div className="relative">
+                      <UserCircleIcon className="h-8 w-8 text-blue-600 hover:scale-110 transition-transform duration-300" />
+                      <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                    </div>
+                    <span className="font-medium text-gray-700 hover:text-blue-600 transition-colors duration-300">{user.name}</span>
+                  </div>
+                  <button onClick={logout} className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold py-2 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 shadow-lg hover:shadow-xl">
                     Logout
                   </button>
                 </div>
@@ -144,18 +153,23 @@ const SinglePage = () => {
                       setAuthMode('login');
                       setShowAuthModal(true);
                     }}
-                    className="text-gray-700 hover:text-blue-600"
+                    className="px-6 py-2 text-gray-700 hover:text-blue-600 font-medium transition-all duration-300 relative before:absolute before:inset-0 before:bg-blue-50 before:rounded-xl before:scale-0 hover:before:scale-100 before:transition-transform before:duration-300"
                   >
-                    Login
+                    <span className="relative z-10">Login</span>
                   </button>
                   <button
                     onClick={() => {
                       setAuthMode('register');
                       setShowAuthModal(true);
                     }}
-                    className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-2xl transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 shadow-lg hover:shadow-2xl"
                   >
-                    Get Started
+                    <span className="flex items-center">
+                      Get Started
+                      <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:scale-110 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </span>
                   </button>
                 </div>
               )}
@@ -165,7 +179,7 @@ const SinglePage = () => {
             <div className="md:hidden flex items-center">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="text-gray-700 hover:text-blue-600"
+                className="p-3 text-gray-700 hover:text-blue-600 bg-gray-50 hover:bg-blue-50 rounded-2xl transition-all duration-300 transform hover:scale-110"
               >
                 {mobileMenuOpen ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
               </button>
@@ -181,7 +195,7 @@ const SinglePage = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium w-full text-left"
+                  className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium w-full text-left rounded-lg hover:bg-blue-50 transition-all duration-300"
                 >
                   {item.name}
                 </button>
@@ -192,29 +206,75 @@ const SinglePage = () => {
       </nav>
 
       {/* Home Section */}
-      <section id="home" className="bg-gradient-to-br from-blue-900 to-purple-900 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Discover Your Perfect Career
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-            Transform your future with personalized career guidance and expert counseling
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => scrollToSection('services')}
-              className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Explore Services
-            </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-blue-900 transition-colors"
-            >
-              Get Started
-            </button>
+      <section id="home" className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white py-24 lg:py-32 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          }}></div>
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <div className="mb-6">
+              <span className="inline-block px-4 py-2 bg-blue-500/20 text-blue-200 text-sm font-medium rounded-full border border-blue-400/30 backdrop-blur-sm animate-pulse">
+                🎯 Professional Career Guidance
+              </span>
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
+              Discover Your
+              <span className="block bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent animate-pulse">
+                Perfect Career
+              </span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl mb-12 max-w-4xl mx-auto text-gray-200 leading-relaxed">
+              Transform your future with personalized career guidance, comprehensive assessments, and expert counseling designed for ambitious professionals.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+              <button
+                onClick={() => scrollToSection('services')}
+                className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl"
+              >
+                <span className="flex items-center">
+                  Explore Services
+                  <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
+              </button>
+              
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white hover:text-gray-900 font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105"
+              >
+                Get Started
+              </button>
+            </div>
+            
+            {/* Stats Section */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-blue-300 mb-2">10K+</div>
+                <div className="text-gray-300 text-sm uppercase tracking-wide">Students Guided</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-blue-300 mb-2">95%</div>
+                <div className="text-gray-300 text-sm uppercase tracking-wide">Success Rate</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-blue-300 mb-2">50+</div>
+                <div className="text-gray-300 text-sm uppercase tracking-wide">Expert Counselors</div>
+              </div>
+            </div>
           </div>
         </div>
+        
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-10 w-20 h-20 bg-blue-400/20 rounded-full blur-xl animate-bounce"></div>
+        <div className="absolute bottom-20 right-10 w-32 h-32 bg-purple-400/20 rounded-full blur-xl animate-bounce" style={{animationDelay: '1s'}}></div>
       </section>
 
       {/* About Section */}
@@ -262,160 +322,254 @@ const SinglePage = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+      <section id="services" className="relative py-32 bg-gradient-to-br from-gray-50 via-white to-blue-50 overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200/30 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-200/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <div className="mb-6">
+              <span className="inline-block px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-bold rounded-full shadow-lg animate-pulse">
+                ✨ Premium Services
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Transform Your
+              <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Career Journey</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
               Comprehensive career development services designed for your success
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <AcademicCapIcon className="h-8 w-8 text-green-600" />
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+            {/* Free Assessment Card */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-600 animate-pulse"></div>
+              <div className="relative bg-white rounded-3xl shadow-2xl hover:shadow-3xl p-10 border border-gray-100 transition-all duration-600 transform hover:-translate-y-4">
+                <div className="absolute top-6 right-6">
+                  <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white text-xs font-bold rounded-full animate-bounce">
+                    🎯 POPULAR
+                  </span>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Career Assessment</h3>
-                <p className="text-gray-600 mb-4">
-                  Comprehensive analysis of your personality, skills, and interests
-                </p>
-                <div className="text-3xl font-bold text-green-600 mb-2">FREE</div>
+                
+                <div className="mb-8">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-3xl mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                    <AcademicCapIcon className="h-10 w-10 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-400">
+                    Smart Career Assessment
+                  </h3>
+                  <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                    Comprehensive analysis of your personality, skills, and interests
+                  </p>
+                  <div className="text-3xl font-bold text-green-600 mb-2">FREE</div>
+                </div>
+
+                <div className="space-y-4 mb-10">
+                  {[
+                    { icon: '🧠', text: 'Advanced personality analysis' },
+                    { icon: '⚡', text: 'Skills & strengths evaluation' },
+                    { icon: '🎯', text: 'AI-powered career matching' },
+                    { icon: '📊', text: 'Detailed insights report' },
+                    { icon: '🚀', text: 'Growth recommendations' }
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-center text-gray-700">
+                      <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center mr-4 transform group-hover:scale-110 transition-transform duration-300">
+                        <span className="text-lg">{item.icon}</span>
+                      </div>
+                      <span className="font-medium">{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-400 transform hover:scale-105 shadow-lg hover:shadow-2xl"
+                >
+                  <span className="flex items-center justify-center">
+                    Start Free Assessment
+                    <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </span>
+                </button>
               </div>
-              <ul className="space-y-2 mb-6">
-                <li className="flex items-center text-gray-700">
-                  <span className="w-2 h-2 bg-green-600 rounded-full mr-3"></span>
-                  Personality analysis
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <span className="w-2 h-2 bg-green-600 rounded-full mr-3"></span>
-                  Skills evaluation
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <span className="w-2 h-2 bg-green-600 rounded-full mr-3"></span>
-                  Career matching
-                </li>
-              </ul>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors"
-              >
-                Start Free Assessment
-              </button>
             </div>
 
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <UserGroupIcon className="h-8 w-8 text-blue-600" />
+            {/* Premium Counseling Card */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-600 animate-pulse"></div>
+              <div className="relative bg-white rounded-3xl shadow-2xl hover:shadow-3xl p-10 border border-gray-100 transition-all duration-600 transform hover:-translate-y-4">
+                <div className="absolute top-6 right-6">
+                  <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-500 to-blue-600 text-white text-xs font-bold rounded-full animate-bounce">
+                    👑 PREMIUM
+                  </span>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Expert Counseling</h3>
-                <p className="text-gray-600 mb-4">
-                  One-on-one sessions with industry-leading career counselors
-                </p>
-                <div className="text-3xl font-bold text-blue-600 mb-2">$75</div>
-                <p className="text-gray-500 text-sm">per session</p>
+                
+                <div className="mb-8">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                    <UserGroupIcon className="h-10 w-10 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-400">
+                    Expert Counseling
+                  </h3>
+                  <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                    One-on-one sessions with industry-leading career counselors
+                  </p>
+                  <div className="text-3xl font-bold text-blue-600 mb-2">$75</div>
+                  <p className="text-gray-500 text-sm">per session</p>
+                </div>
+
+                <div className="space-y-4 mb-10">
+                  {[
+                    { icon: '⏰', text: '60-minute deep-dive sessions' },
+                    { icon: '🎯', text: 'Personalized career strategy' },
+                    { icon: '📈', text: 'Industry insights & trends' },
+                    { icon: '🤝', text: 'Networking opportunities' },
+                    { icon: '📋', text: 'Action plan & follow-up' }
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-center text-gray-700">
+                      <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl flex items-center justify-center mr-4 transform group-hover:scale-110 transition-transform duration-300">
+                        <span className="text-lg">{item.icon}</span>
+                      </div>
+                      <span className="font-medium">{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-400 transform hover:scale-105 shadow-lg hover:shadow-2xl"
+                >
+                  <span className="flex items-center justify-center">
+                    Book Session
+                    <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </span>
+                </button>
               </div>
-              <ul className="space-y-2 mb-6">
-                <li className="flex items-center text-gray-700">
-                  <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                  60-minute sessions
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                  Personalized strategy
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                  Industry insights
-                </li>
-              </ul>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                Book Session
-              </button>
             </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+      <section id="contact" className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5"></div>
+        <div className="absolute top-20 left-10 w-32 h-32 bg-blue-400/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-400/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <div className="mb-6">
+              <span className="inline-block px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-bold rounded-full shadow-lg animate-pulse">
+                💬 Get In Touch
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Let's Start Your
+              <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Career Journey</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
               Ready to transform your career? Get in touch with us today
             </p>
           </div>
 
-          <div className="max-w-2xl mx-auto">
-            <div className="bg-gray-50 rounded-lg shadow-lg p-8">
-              <form onSubmit={handleContactSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      value={contactForm.name}
-                      onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      required
-                    />
+          <div className="max-w-4xl mx-auto">
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-600"></div>
+              <div className="relative bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl hover:shadow-3xl p-10 border border-gray-100/50 transition-all duration-600 transform hover:-translate-y-2">
+                <div className="mb-8">
+                  <h3 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-blue-600 bg-clip-text text-transparent mb-4">Send us a message</h3>
+                  <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+                </div>
+                
+                <form onSubmit={handleContactSubmit} className="space-y-8">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="group">
+                      <label className="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-blue-600 transition-colors duration-300">
+                        Full Name
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="text"
+                          value={contactForm.name}
+                          onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
+                          className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-400 bg-white/90 backdrop-blur-sm placeholder-gray-400 hover:border-blue-300 transform focus:scale-105 hover:shadow-lg focus:shadow-xl"
+                          placeholder="Enter your full name"
+                          required
+                        />
+                      </div>
+                    </div>
+                    
+                    <div className="group">
+                      <label className="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-blue-600 transition-colors duration-300">
+                        Email Address
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="email"
+                          value={contactForm.email}
+                          onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
+                          className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-400 bg-white/90 backdrop-blur-sm placeholder-gray-400 hover:border-blue-300 transform focus:scale-105 hover:shadow-lg focus:shadow-xl"
+                          placeholder="your.email@example.com"
+                          required
+                        />
+                      </div>
+                    </div>
                   </div>
                   
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address
+                  <div className="group">
+                    <label className="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-blue-600 transition-colors duration-300">
+                      Subject
                     </label>
-                    <input
-                      type="email"
-                      value={contactForm.email}
-                      onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      required
-                    />
+                    <div className="relative">
+                      <input
+                        type="text"
+                        value={contactForm.subject}
+                        onChange={(e) => setContactForm({ ...contactForm, subject: e.target.value })}
+                        className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-400 bg-white/90 backdrop-blur-sm placeholder-gray-400 hover:border-blue-300 transform focus:scale-105 hover:shadow-lg focus:shadow-xl"
+                        placeholder="What can we help you with?"
+                        required
+                      />
+                    </div>
                   </div>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    value={contactForm.subject}
-                    onChange={(e) => setContactForm({ ...contactForm, subject: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    value={contactForm.message}
-                    onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
-                    rows="6"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required
-                  />
-                </div>
-                
-                <button
-                  type="submit"
-                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-medium"
-                >
-                  Send Message
-                </button>
-              </form>
+                  
+                  <div className="group">
+                    <label className="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-blue-600 transition-colors duration-300">
+                      Message
+                    </label>
+                    <div className="relative">
+                      <textarea
+                        value={contactForm.message}
+                        onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
+                        rows="6"
+                        className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-400 bg-white/90 backdrop-blur-sm placeholder-gray-400 hover:border-blue-300 transform focus:scale-105 hover:shadow-lg focus:shadow-xl resize-none"
+                        placeholder="Tell us about your career goals and how we can help..."
+                        required
+                      />
+                    </div>
+                  </div>
+                  
+                  <button
+                    type="submit"
+                    className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-bold py-5 px-8 rounded-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 shadow-xl hover:shadow-2xl"
+                  >
+                    <span className="flex items-center justify-center">
+                      Send Message
+                      <svg className="ml-3 w-5 h-5 group-hover:translate-x-1 group-hover:scale-110 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                      </svg>
+                    </span>
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
