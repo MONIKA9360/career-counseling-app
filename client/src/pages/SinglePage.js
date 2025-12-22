@@ -966,58 +966,120 @@ const SinglePage = () => {
       </section>
 
       {/* Booking Section */}
-      <section id="booking" className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Book a Counseling Session</h2>
-            <p className="text-xl text-gray-600">
-              Schedule a one-on-one session with our expert career counselors
+      <section id="booking" className="py-24 bg-gradient-to-br from-primary-50 via-white to-accent-50 relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-r from-primary-400/20 to-accent-400/20 rounded-full blur-3xl animate-liquid-move"></div>
+          <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-r from-accent-400/15 to-primary-400/15 rounded-full blur-3xl animate-liquid-move" style={{animationDelay: '3s'}}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-primary-300/10 to-accent-300/10 rounded-full blur-3xl animate-pulse"></div>
+        </div>
+
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <div className="mb-8">
+              <span className="inline-block px-8 py-4 bg-gradient-to-r from-primary-500 to-accent-500 text-white text-sm font-bold rounded-full shadow-xl animate-bounce-gentle particle-system">
+                📅 Premium Booking
+              </span>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-display font-bold text-secondary-900 mb-8">
+              Book Your
+              <span className="block bg-gradient-to-r from-primary-600 via-accent-500 to-primary-700 bg-clip-text text-transparent holographic-bg">
+                Success Session
+              </span>
+            </h2>
+            <p className="text-2xl text-secondary-600 max-w-4xl mx-auto leading-relaxed">
+              Schedule a transformative one-on-one session with our world-class career experts and unlock your potential.
             </p>
           </div>
 
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <form onSubmit={handleBookingSubmit} className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Select Counselor
-                </label>
-                <select
-                  value={selectedCounselor}
-                  onChange={(e) => setSelectedCounselor(e.target.value)}
-                  className="input-field"
-                  required
-                >
-                  <option value="">Choose a counselor...</option>
-                  {Array.isArray(counselors) && counselors.map((counselor) => (
-                    <option key={counselor.id} value={counselor.id}>
-                      {counselor.name} - {counselor.profile?.specialization || 'General Counseling'}
-                    </option>
-                  ))}
-                </select>
+          <div className="group relative">
+            {/* Glowing border effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-primary-500 via-accent-500 to-primary-500 rounded-4xl blur-xl opacity-30 group-hover:opacity-60 transition-opacity duration-800 animate-neon-glow"></div>
+            
+            <div className="relative bg-white/95 backdrop-blur-xl rounded-4xl shadow-2xl hover:shadow-3xl p-12 border border-white/50 transition-all duration-800 transform hover:-translate-y-4 hover:scale-[1.02] glass-morphism-strong">
+              {/* Premium badge */}
+              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
+                <div className="bg-gradient-to-r from-accent-500 to-primary-600 text-white px-8 py-3 rounded-full font-bold text-sm shadow-xl animate-morph-border">
+                  ⭐ Premium Experience
+                </div>
               </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Session Type
-                </label>
-                <select
-                  value={bookingForm.type}
-                  onChange={(e) => setBookingForm({ ...bookingForm, type: e.target.value })}
-                  className="input-field"
-                  required
-                >
-                  {sessionTypes.map((type) => (
-                    <option key={type.value} value={type.value}>
-                      {type.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
+              <form onSubmit={handleBookingSubmit} className="space-y-10">
+                {/* Counselor Selection */}
+                <div className="group">
+                  <label className="block text-lg font-bold text-secondary-800 mb-4 group-focus-within:text-primary-600 transition-colors duration-300">
+                    <span className="flex items-center">
+                      👨‍💼 Select Your Expert Counselor
+                      <div className="ml-3 w-2 h-2 bg-primary-500 rounded-full animate-pulse"></div>
+                    </span>
+                  </label>
+                  <div className="relative">
+                    <select
+                      value={selectedCounselor}
+                      onChange={(e) => setSelectedCounselor(e.target.value)}
+                      className="w-full px-8 py-6 border-3 border-secondary-200 rounded-3xl focus:outline-none focus:ring-6 focus:ring-primary-100 focus:border-primary-500 transition-all duration-500 bg-gradient-to-r from-white to-primary-50/30 placeholder-secondary-400 hover:border-primary-300 transform focus:scale-[1.02] hover:shadow-xl focus:shadow-2xl text-lg font-medium hover-3d-lift"
+                      required
+                    >
+                      <option value="">Choose your ideal counselor...</option>
+                      {Array.isArray(counselors) && counselors.map((counselor, index) => (
+                        <option key={counselor.id} value={counselor.id}>
+                          {counselor.name} - {counselor.profile?.specialization || 'General Counseling'}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary-100/50 to-accent-100/50 rounded-3xl opacity-0 focus-within:opacity-100 transition-opacity duration-500 -z-10"></div>
+                    <div className="absolute right-6 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                      <svg className="w-6 h-6 text-primary-500 animate-bounce-gentle" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Preferred Date
-                </label>
+                {/* Session Type */}
+                <div className="group">
+                  <label className="block text-lg font-bold text-secondary-800 mb-4 group-focus-within:text-primary-600 transition-colors duration-300">
+                    <span className="flex items-center">
+                      🎯 Session Type
+                      <div className="ml-3 w-2 h-2 bg-accent-500 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                    </span>
+                  </label>
+                  <div className="relative">
+                    <select
+                      value={bookingForm.type}
+                      onChange={(e) => setBookingForm({ ...bookingForm, type: e.target.value })}
+                      className="w-full px-8 py-6 border-3 border-secondary-200 rounded-3xl focus:outline-none focus:ring-6 focus:ring-accent-100 focus:border-accent-500 transition-all duration-500 bg-gradient-to-r from-white to-accent-50/30 placeholder-secondary-400 hover:border-accent-300 transform focus:scale-[1.02] hover:shadow-xl focus:shadow-2xl text-lg font-medium hover-3d-lift"
+                      required
+                    >
+                      {sessionTypes.map((type, index) => (
+                        <option key={type.value} value={type.value}>
+                          {type.label}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="absolute inset-0 bg-gradient-to-r from-accent-100/50 to-primary-100/50 rounded-3xl opacity-0 focus-within:opacity-100 transition-opacity duration-500 -z-10"></div>
+                  </div>
+                </div>
+
+                {/* Date Selection */}
+                <div className="group">
+                  <label className="block text-lg font-bold text-secondary-800 mb-4 group-focus-within:text-primary-600 transition-colors duration-300">
+                    <span className="flex items-center">
+                      📅 Preferred Date
+                      <div className="ml-3 w-2 h-2 bg-success-500 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                    </span>
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="date"
+                      value={bookingForm.date}
+                      onChange={(e) => setBookingForm({ ...bookingForm, date: e.target.value })}
+                      className="w-full px-8 py-6 border-3 border-secondary-200 rounded-3xl focus:outline-none focus:ring-6 focus:ring-success-100 focus:border-success-500 transition-all duration-500 bg-gradient-to-r from-white to-success-50/30 placeholder-secondary-400 hover:border-success-300 transform focus:scale-[1.02] hover:shadow-xl focus:shadow-2xl text-lg font-medium hover-3d-lift"
+                      required
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-success-100/50 to-primary-100/50 rounded-3xl opacity-0 focus-within:opacity-100 transition-opacity duration-500 -z-10"></div>
+                  </div>
+                </div>
                 <input
                   type="date"
                   value={bookingForm.date}
@@ -1372,49 +1434,172 @@ const SinglePage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="col-span-1">
-              <h3 className="text-2xl font-bold mb-4">CareerGuide</h3>
-              <p className="text-gray-400 mb-4">
-                Empowering students to discover their perfect career path through expert guidance and comprehensive assessments.
+      <footer className="relative bg-gradient-to-br from-secondary-900 via-secondary-800 to-secondary-900 text-white py-20 overflow-hidden">
+        {/* Animated background */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-primary-900/20 to-accent-900/20 animate-gradient-x"></div>
+          <div className="absolute top-10 left-10 w-32 h-32 bg-primary-500/10 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-10 right-10 w-40 h-40 bg-accent-500/10 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
+          <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-primary-400/5 rounded-full blur-2xl animate-particle-float"></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-12">
+            {/* Brand Section */}
+            <div className="col-span-1 group">
+              <div className="mb-6">
+                <div className="flex items-center space-x-4 mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-xl animate-pulse-ring">
+                    <span className="text-white font-bold text-xl">C</span>
+                  </div>
+                  <h3 className="text-3xl font-display font-bold text-gradient-animate">CareerGuide</h3>
+                </div>
+                <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full mb-6 transform group-hover:w-32 transition-all duration-500"></div>
+              </div>
+              <p className="text-secondary-300 leading-relaxed text-lg group-hover:text-white transition-colors duration-500">
+                Empowering the next generation to discover their perfect career path through cutting-edge AI guidance and expert mentorship.
               </p>
+              
+              {/* Social Icons */}
+              <div className="flex space-x-4 mt-8">
+                {['💼', '🌐', '📧', '📱'].map((icon, index) => (
+                  <button key={index} className="group/social w-12 h-12 bg-secondary-800 hover:bg-gradient-to-r hover:from-primary-500 hover:to-accent-500 rounded-2xl flex items-center justify-center transition-all duration-400 transform hover:scale-110 hover:-translate-y-1 hover:shadow-xl animate-smooth-reveal" style={{animationDelay: `${index * 0.1}s`}}>
+                    <span className="text-xl group-hover/social:scale-110 transition-transform duration-300">{icon}</span>
+                  </button>
+                ))}
+              </div>
             </div>
             
-            <div>
-              <h4 className="font-semibold mb-4">Services</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><button onClick={() => scrollToSection('assessment')} className="hover:text-white">Career Assessment</button></li>
-                <li><button onClick={() => scrollToSection('booking')} className="hover:text-white">Counseling Sessions</button></li>
-                <li><button onClick={() => scrollToSection('services')} className="hover:text-white">Career Services</button></li>
-                <li><button onClick={() => scrollToSection('blog')} className="hover:text-white">Resources</button></li>
+            {/* Services */}
+            <div className="group">
+              <h4 className="text-xl font-bold mb-6 text-gradient-animate">Services</h4>
+              <ul className="space-y-4">
+                {[
+                  { text: 'Career Assessment', action: () => scrollToSection('assessment'), icon: '🎯' },
+                  { text: 'Counseling Sessions', action: () => scrollToSection('booking'), icon: '👨‍💼' },
+                  { text: 'Career Services', action: () => scrollToSection('services'), icon: '🚀' },
+                  { text: 'Resources', action: () => scrollToSection('blog'), icon: '📚' }
+                ].map((item, index) => (
+                  <li key={index} className="animate-smooth-reveal stagger-1" style={{animationDelay: `${index * 0.1}s`}}>
+                    <button 
+                      onClick={item.action} 
+                      className="group/link flex items-center text-secondary-400 hover:text-white transition-all duration-300 transform hover:translate-x-2"
+                    >
+                      <span className="mr-3 text-lg group-hover/link:scale-110 transition-transform duration-300">{item.icon}</span>
+                      <span className="relative">
+                        {item.text}
+                        <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-accent-500 group-hover/link:w-full transition-all duration-500"></div>
+                      </span>
+                    </button>
+                  </li>
+                ))}
               </ul>
             </div>
             
-            <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><button onClick={() => scrollToSection('about')} className="hover:text-white">About Us</button></li>
-                <li><button onClick={() => scrollToSection('contact')} className="hover:text-white">Contact</button></li>
-                <li><button onClick={() => scrollToSection('blog')} className="hover:text-white">Blog</button></li>
+            {/* Company */}
+            <div className="group">
+              <h4 className="text-xl font-bold mb-6 text-gradient-animate">Company</h4>
+              <ul className="space-y-4">
+                {[
+                  { text: 'About Us', action: () => scrollToSection('about'), icon: '🏢' },
+                  { text: 'Contact', action: () => scrollToSection('contact'), icon: '📞' },
+                  { text: 'Blog', action: () => scrollToSection('blog'), icon: '✍️' }
+                ].map((item, index) => (
+                  <li key={index} className="animate-smooth-reveal stagger-2" style={{animationDelay: `${index * 0.1}s`}}>
+                    <button 
+                      onClick={item.action} 
+                      className="group/link flex items-center text-secondary-400 hover:text-white transition-all duration-300 transform hover:translate-x-2"
+                    >
+                      <span className="mr-3 text-lg group-hover/link:scale-110 transition-transform duration-300">{item.icon}</span>
+                      <span className="relative">
+                        {item.text}
+                        <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-accent-500 group-hover/link:w-full transition-all duration-500"></div>
+                      </span>
+                    </button>
+                  </li>
+                ))}
               </ul>
             </div>
             
-            <div>
-              <h4 className="font-semibold mb-4">Support</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><button type="button" className="hover:text-white text-left">Help Center</button></li>
-                <li><button type="button" className="hover:text-white text-left">Privacy Policy</button></li>
-                <li><button type="button" className="hover:text-white text-left">Terms of Service</button></li>
+            {/* Support */}
+            <div className="group">
+              <h4 className="text-xl font-bold mb-6 text-gradient-animate">Support</h4>
+              <ul className="space-y-4">
+                {[
+                  { text: 'Help Center', icon: '❓' },
+                  { text: 'Privacy Policy', icon: '🔒' },
+                  { text: 'Terms of Service', icon: '📋' }
+                ].map((item, index) => (
+                  <li key={index} className="animate-smooth-reveal stagger-3" style={{animationDelay: `${index * 0.1}s`}}>
+                    <button 
+                      type="button" 
+                      className="group/link flex items-center text-secondary-400 hover:text-white transition-all duration-300 transform hover:translate-x-2"
+                    >
+                      <span className="mr-3 text-lg group-hover/link:scale-110 transition-transform duration-300">{item.icon}</span>
+                      <span className="relative">
+                        {item.text}
+                        <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-accent-500 group-hover/link:w-full transition-all duration-500"></div>
+                      </span>
+                    </button>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
           
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 CareerGuide. All rights reserved.</p>
-            <p className="mt-2 text-sm">Developed by <span className="text-primary-400 font-semibold">MONIKA M</span> • Enhanced UI</p>
+          {/* Bottom Section */}
+          <div className="relative mt-16 pt-12 border-t border-secondary-700/50">
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary-500 to-transparent"></div>
+            
+            <div className="text-center space-y-6">
+              <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+                <p className="text-secondary-400 text-lg">
+                  &copy; 2024 CareerGuide. All rights reserved.
+                </p>
+                
+                <div className="flex items-center space-x-2">
+                  <span className="text-secondary-400">Crafted with</span>
+                  <span className="text-red-500 animate-pulse text-xl">❤️</span>
+                  <span className="text-secondary-400">by</span>
+                  <span className="relative group/dev">
+                    <span className="text-gradient-animate font-bold text-xl cursor-pointer">MONIKA M</span>
+                    <div className="absolute -inset-2 bg-gradient-to-r from-primary-500/20 to-accent-500/20 rounded-xl opacity-0 group-hover/dev:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                  </span>
+                </div>
+              </div>
+              
+              <div className="flex items-center justify-center space-x-8 text-sm text-secondary-500">
+                <span className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-success-500 rounded-full animate-pulse"></div>
+                  <span>Enhanced UI</span>
+                </span>
+                <span className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                  <span>Premium Animations</span>
+                </span>
+                <span className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-accent-500 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                  <span>Professional Design</span>
+                </span>
+              </div>
+            </div>
           </div>
+        </div>
+        
+        {/* Floating particles */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(6)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-primary-400/30 rounded-full animate-sparkle"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 3}s`,
+                animationDuration: `${2 + Math.random() * 2}s`
+              }}
+            ></div>
+          ))}
         </div>
       </footer>
 
