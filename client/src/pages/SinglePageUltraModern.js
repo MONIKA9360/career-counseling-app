@@ -79,19 +79,57 @@ const SinglePage = () => {
     
     try {
       console.log('Submitting form:', contactForm);
-      const response = await axios.post('/api/contact', contactForm);
+      
+      // Show loading state
+      const loadingToast = toast.loading('Sending your message... 🚀');
+      
+      const response = await axios.post('/api/contact', contactForm, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        timeout: 10000, // 10 second timeout
+      });
+      
       console.log('Response:', response.data);
       
+      // Dismiss loading toast
+      toast.dismiss(loadingToast);
+      
       if (response.data.success) {
-        toast.success(response.data.message || 'Message sent successfully! 🎉');
+        toast.success(response.data.message || 'Message sent successfully! 🎉', {
+          duration: 5000,
+          icon: '🎉',
+        });
       } else {
-        toast.success('Message sent successfully! 🎉');
+        toast.success('Message sent successfully! 🎉', {
+          duration: 5000,
+          icon: '🎉',
+        });
       }
       
+      // Clear form
       setContactForm({ name: '', email: '', subject: '', message: '' });
+      
     } catch (error) {
       console.error('Contact form error:', error);
-      toast.error('Failed to send message. Please try again. 😔');
+      
+      // Dismiss any loading toast
+      toast.dismiss();
+      
+      let errorMessage = 'Failed to send message. Please try again. 😔';
+      
+      if (error.code === 'ECONNABORTED') {
+        errorMessage = 'Request timeout. Please check your connection and try again. ⏰';
+      } else if (error.response) {
+        errorMessage = error.response.data?.message || 'Server error. Please try again later. 🔧';
+      } else if (error.request) {
+        errorMessage = 'Network error. Please check your connection. 📡';
+      }
+      
+      toast.error(errorMessage, {
+        duration: 5000,
+        icon: '❌',
+      });
     }
   };
 
